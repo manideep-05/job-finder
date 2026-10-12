@@ -1,0 +1,22 @@
+# Secrets
+.env
+*.env
+!.env.example
+
+# Maven build output
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

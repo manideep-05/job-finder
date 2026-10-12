@@ -1,0 +1,1758 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JobFinder India · Curated SDE Openings (&lt; 5 Yrs Exp)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #eef2ff;
+      --success: #059669;
+      --success-light: #ecfdf5;
+      --warning: #d97706;
+      --warning-light: #fffbeb;
+      --danger: #dc2626;
+      --danger-light: #fef2f2;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --card-bg: #ffffff;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: #f8fafc;
+      color: var(--slate-800);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation / Hero */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #31104b 100%);
+      color: white;
+      padding: 36px 20px 42px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-flag {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 18px;
+      margin-top: 10px;
+      font-size: 13.5px;
+      color: #cbd5e1;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta strong {
+      color: #ffffff;
+    }
+
+    /* Scan Action Box */
+    .scan-form {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .scan-form label {
+      font-size: 13px;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .scan-btn {
+      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+      color: white;
+      border: none;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+    }
+
+    .scan-btn:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #4f46e5 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+    }
+
+    .scan-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1240px;
+      margin: -24px auto 48px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+    }
+
+    .metric-card .title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--slate-500);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .metric-card .val {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-top: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .metric-card .subtitle {
+      font-size: 12.5px;
+      color: var(--slate-500);
+      margin-top: 4px;
+    }
+
+    .metric-highlight {
+      border-top: 4px solid var(--primary);
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      background: var(--card-bg);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 11px 16px 11px 40px;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--slate-900);
+      background: var(--slate-50);
+      transition: var(--transition);
+    }
+
+    .search-box input:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--slate-400);
+      font-size: 15px;
+    }
+
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .chip {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      border: 1px solid var(--slate-200);
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .chip:hover {
+      background: #e2e8f0;
+    }
+
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    }
+
+    .sort-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--slate-600);
+    }
+
+    .sort-control select {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      color: var(--slate-800);
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Diagnostics Banner */
+    .diag-banner {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 22px;
+      color: #9f1239;
+      font-size: 13px;
+    }
+
+    .diag-banner summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .diag-banner ul {
+      margin-top: 8px;
+      padding-left: 20px;
+    }
+
+    /* Jobs Section Header */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-head h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--slate-900);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .count-pill {
+      background: #e0e7ff;
+      color: var(--primary);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    /* Job Cards Grid */
+    .jobs-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .job-card {
+      background: var(--card-bg);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .job-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: #cbd5e1;
+    }
+
+    /* Score left bar */
+    .job-card.score-high {
+      border-left: 6px solid #10b981;
+    }
+
+    .job-card.score-mid {
+      border-left: 6px solid #4f46e5;
+    }
+
+    .job-card.score-low {
+      border-left: 6px solid #f59e0b;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .job-header {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .company-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .job-title-area h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 4px;
+    }
+
+    .job-title-area h3 a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .job-title-area h3 a:hover {
+      color: var(--primary);
+    }
+
+    .job-submeta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+      color: var(--slate-600);
+      flex-wrap: wrap;
+    }
+
+    .job-submeta b {
+      color: var(--slate-900);
+    }
+
+    /* Score Badges */
+    .score-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      flex-shrink: 0;
+      text-align: center;
+      min-width: 90px;
+    }
+
+    .score-badge .score-num {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .score-badge .score-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 3px;
+    }
+
+    .badge-high {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-mid {
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+    }
+
+    .badge-low {
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    /* Pills & Tags */
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--slate-100);
+      color: var(--slate-700);
+    }
+
+    .tag-india {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .tag-exp {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .tag-comp {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .tag-new {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1px solid #fbcfe8;
+      font-weight: 700;
+    }
+
+    /* Expandable JD Styles */
+    .jd-accordion {
+      margin-top: 14px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 13px;
+      transition: var(--transition);
+    }
+
+    .jd-accordion[open] {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .jd-accordion summary {
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .jd-accordion summary:hover {
+      color: #3730a3;
+    }
+
+    .jd-content {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--slate-200);
+      color: var(--slate-700);
+      font-size: 13px;
+      line-height: 1.65;
+      max-height: 380px;
+      overflow-y: auto;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+
+    /* Card Details & Actions */
+    .card-footer {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--slate-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .action-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-apply {
+      background: var(--slate-900);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .btn-apply:hover {
+      background: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-research {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--slate-200);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .btn-research:hover {
+      background: #e2e8f0;
+      color: var(--slate-900);
+    }
+
+    .btn-alumni {
+      background: #fdf4ff;
+      color: #9333ea;
+      border-color: #f0abfc;
+      font-weight: 700;
+    }
+
+    .btn-alumni:hover {
+      background: #fae8ff;
+      color: #7e22ce;
+      border-color: #e879f9;
+    }
+
+    .source-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-500);
+    }
+
+    /* Empty State */
+    .empty-state {
+      background: white;
+      border: 2px dashed var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 56px 24px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .empty-state h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 6px;
+    }
+
+    .empty-state p {
+      font-size: 14px;
+      color: var(--slate-500);
+      max-width: 480px;
+      margin: 0 auto 20px;
+    }
+
+    /* Category Navigation Tabs */
+    .category-tabs-container {
+      margin-bottom: 22px;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      background: var(--card-bg);
+      padding: 8px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .category-tab {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border: 1.5px solid transparent;
+      border-radius: var(--radius-md);
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate-600);
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .category-tab:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    .category-tab.active {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .category-tab#tabBtn-PENDING.active {
+      background: #eef2ff;
+      border-color: #818cf8;
+      color: #3730a3;
+    }
+
+    .category-tab#tabBtn-APPLIED.active {
+      background: #ecfdf5;
+      border-color: #34d399;
+      color: #065f46;
+    }
+
+    .category-tab#tabBtn-NOT_RELEVANT.active {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+      color: #334155;
+    }
+
+    .tab-icon {
+      font-size: 16px;
+    }
+
+    .tab-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      transition: var(--transition);
+    }
+
+    .badge-pending {
+      background: #e0e7ff;
+      color: #4338ca;
+    }
+
+    .category-tab#tabBtn-PENDING.active .badge-pending {
+      background: #4f46e5;
+      color: #ffffff;
+    }
+
+    .badge-applied {
+      background: #d1fae5;
+      color: #047857;
+    }
+
+    .category-tab#tabBtn-APPLIED.active .badge-applied {
+      background: #059669;
+      color: #ffffff;
+    }
+
+    .badge-not-relevant {
+      background: #e2e8f0;
+      color: #475569;
+    }
+
+    .category-tab#tabBtn-NOT_RELEVANT.active .badge-not-relevant {
+      background: #475569;
+      color: #ffffff;
+    }
+
+    .category-tabs-info {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--slate-500);
+      padding: 0 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .category-sync-indicator {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-500);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Category Pill in Job Card */
+    .job-category-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+    }
+
+    .pill-pending {
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+    }
+
+    .pill-applied {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .pill-not-relevant {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* Category Updater in Card Footer */
+    .category-updater-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .updater-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--slate-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .category-btn-group {
+      display: inline-flex;
+      background: var(--slate-100);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      gap: 3px;
+      border: 1px solid var(--slate-200);
+    }
+
+    .cat-btn {
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-600);
+      padding: 6px 11px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .cat-btn:hover {
+      color: var(--slate-900);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .cat-btn.active.cat-btn-pending {
+      background: #ffffff;
+      color: #4338ca;
+      font-weight: 800;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #c7d2fe;
+    }
+
+    .cat-btn.active.cat-btn-applied {
+      background: #059669;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 1px 4px rgba(5, 150, 105, 0.35);
+    }
+
+    .cat-btn.active.cat-btn-not-relevant {
+      background: #475569;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 1px 4px rgba(71, 85, 105, 0.35);
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: var(--slate-900);
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.28);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      pointer-events: auto;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      max-width: 380px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-link {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      border: none;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .toast-link:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    @media (max-width: 860px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .scan-form {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .card-top {
+        flex-direction: column;
+      }
+
+      .score-badge {
+        align-self: flex-start;
+      }
+
+      .category-tabs {
+        flex-direction: column;
+      }
+
+      .category-tab {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Hero Header -->
+  <header class="hero">
+    <div class="hero-container">
+      <div class="hero-title">
+        <h1>
+          <span>⚡ JobFinder</span>
+          <span class="badge-flag">🇮🇳 India Tech Hub</span>
+        </h1>
+        <div class="hero-meta">
+          <span>🎯 Target: <strong>₹33+ LPA CTC</strong></span>
+          <span>⏳ Experience: <strong>&lt; 5 Years Only</strong></span>
+          <span>📍 Locations: <strong>India &amp; India Remote</strong></span>
+          <span>📧 Reports: <strong th:text="${status.emailStatus()}">Sent</strong></span>
+        </div>
+      </div>
+
+      <form method="post" action="/scan" class="scan-form" id="scanForm">
+        <label>
+          <input type="checkbox" name="sendEmail" value="true" checked>
+          Email report
+        </label>
+        <button class="scan-btn" type="submit" id="scanBtn">
+          <span>▶ Run Job Scan</span>
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-container">
+
+    <!-- Metrics Cards -->
+    <section class="metrics-grid">
+      <div class="metric-card metric-highlight">
+        <span class="title">Qualifying India Jobs</span>
+        <div class="val" th:text="${status.qualifyingJobs()}">0</div>
+        <span class="subtitle">Score &ge; 59 &middot; Exp &lt; 5 yrs</span>
+      </div>
+      <div class="metric-card">
+        <span class="title">Jobs Evaluated</span>
+        <div class="val" th:text="${status.jobsFetched()}">0</div>
+        <span class="subtitle">Scanned this run</span>
+      </div>
+      <div class="metric-card">
+        <span class="title">Stored in Database</span>
+        <div class="val" th:text="${allCount}">0</div>
+        <span class="subtitle">PostgreSQL (score &ge; 59)</span>
+      </div>
+      <div class="metric-card">
+        <span class="title">Scanner Status</span>
+        <div class="val" style="font-size: 20px; font-weight: 700; margin-top: 14px;" th:text="${status.state()}">IDLE
+        </div>
+        <span class="subtitle"
+          th:text="${status.startedAt() == null ? 'Ready to scan' : 'Last run: ' + #strings.substring(status.startedAt().toString(), 0, 19)}">Ready</span>
+      </div>
+    </section>
+
+    <!-- Source Errors (if any) -->
+    <div class="diag-banner" th:if="${!status.errors().isEmpty()}"
+      style="margin-bottom: 20px; background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius-md); padding: 14px 18px;">
+      <details>
+        <summary style="font-weight: 700; color: #92400e; cursor: pointer;">⚠️ Source diagnostics &amp; API alerts
+          (<span th:text="${status.errors().size()}"></span> items noted)</summary>
+        <ul style="margin-top: 10px; padding-left: 20px; font-size: 13px; color: #78350f;">
+          <li th:each="err : ${status.errors()}" th:text="${err}"></li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- ATS & Career Board Health Monitor -->
+    <section class="api-health-section" style="margin-bottom: 24px;">
+      <details
+        style="background: var(--card-bg); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 14px 18px; box-shadow: var(--shadow-sm);">
+        <summary
+          style="font-weight: 700; font-size: 14px; cursor: pointer; color: var(--slate-800); display: flex; align-items: center; justify-content: space-between;">
+          <span>🔌 Board Health &amp; API Monitor (<span
+              th:text="${diagnostics != null ? diagnostics.size() : 0}">0</span> endpoints tracked)</span>
+          <span style="font-size: 12px; font-weight: 600; color: var(--primary);">View API status ▾</span>
+        </summary>
+        <div style="margin-top: 14px; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--slate-200); color: var(--slate-600);">
+                <th style="padding: 8px 10px;">Company</th>
+                <th style="padding: 8px 10px;">Source Adapter</th>
+                <th style="padding: 8px 10px;">Status</th>
+                <th style="padding: 8px 10px;">Jobs Found</th>
+                <th style="padding: 8px 10px;">Diagnostics Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="d : ${diagnostics}" style="border-bottom: 1px solid var(--slate-100);">
+                <td style="padding: 8px 10px; font-weight: 700;" th:text="${d.company()}">Company</td>
+                <td style="padding: 8px 10px; color: var(--slate-500);" th:text="${d.source()}">source</td>
+                <td style="padding: 8px 10px;">
+                  <span th:if="${d.status() == 'HEALTHY'}"
+                    style="background: #ecfdf5; color: #059669; font-weight: 700; padding: 2px 8px; border-radius: 4px; font-size: 11px;">🟢
+                    HEALTHY</span>
+                  <span th:if="${d.status() == 'WARNING'}"
+                    style="background: #fffbeb; color: #d97706; font-weight: 700; padding: 2px 8px; border-radius: 4px; font-size: 11px;">🟡
+                    WARNING</span>
+                  <span th:if="${d.status() == 'FAILED'}"
+                    style="background: #fef2f2; color: #dc2626; font-weight: 700; padding: 2px 8px; border-radius: 4px; font-size: 11px;">🔴
+                    FAILED</span>
+                </td>
+                <td style="padding: 8px 10px; font-weight: 600;" th:text="${d.jobsFound()}">0</td>
+                <td style="padding: 8px 10px; color: var(--slate-600); font-family: monospace; font-size: 11.5px;"
+                  th:text="${d.message()}">OK</td>
+              </tr>
+              <tr th:if="${diagnostics == null or diagnostics.isEmpty()}">
+                <td colspan="5" style="padding: 12px; text-align: center; color: var(--slate-500);">Run a scan to
+                  populate board health diagnostics.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- Persistent Database Error Logs (Auto-purged after 4 days) -->
+    <section class="db-error-logs-section" style="margin-bottom: 24px;">
+      <details
+        style="background: var(--card-bg); border: 1px solid #fed7aa; border-radius: var(--radius-md); padding: 14px 18px; box-shadow: var(--shadow-sm);">
+        <summary
+          style="font-weight: 700; font-size: 14px; cursor: pointer; color: #9a3412; display: flex; align-items: center; justify-content: space-between;">
+          <span>📋 Database Error Logs (<span th:text="${errorLogs != null ? errorLogs.size() : 0}">0</span> events
+            recorded &middot; Retained for 4 days)</span>
+          <span style="font-size: 12px; font-weight: 600; color: #c2410c;">Inspect errors ▾</span>
+        </summary>
+        <div style="margin-top: 14px; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--slate-200); color: var(--slate-600);">
+                <th style="padding: 8px 10px;">Logged Time (IST)</th>
+                <th style="padding: 8px 10px;">Company</th>
+                <th style="padding: 8px 10px;">Source Adapter</th>
+                <th style="padding: 8px 10px;">Severity</th>
+                <th style="padding: 8px 10px;">Root Cause &amp; Error Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="log : ${errorLogs}" style="border-bottom: 1px solid var(--slate-100);">
+                <td style="padding: 8px 10px; color: var(--slate-500); white-space: nowrap;"
+                  th:text="${log.formattedCreatedAt}">11 Oct, 11:30 PM</td>
+                <td style="padding: 8px 10px; font-weight: 700;" th:text="${log.company}">Apple</td>
+                <td style="padding: 8px 10px; color: var(--slate-500);" th:text="${log.source}">career-pages</td>
+                <td style="padding: 8px 10px;">
+                  <span th:if="${log.status == 'FAILED'}"
+                    style="background: #fef2f2; color: #dc2626; font-weight: 700; padding: 2px 8px; border-radius: 4px; font-size: 10.5px;">🔴
+                    FAILED</span>
+                  <span th:if="${log.status == 'WARNING'}"
+                    style="background: #fffbeb; color: #d97706; font-weight: 700; padding: 2px 8px; border-radius: 4px; font-size: 10.5px;">🟡
+                    WARNING</span>
+                </td>
+                <td
+                  style="padding: 8px 10px; color: #b91c1c; font-family: monospace; font-size: 11.5px; word-break: break-word;"
+                  th:text="${log.errorMessage}">Error message</td>
+              </tr>
+              <tr th:if="${errorLogs == null or errorLogs.isEmpty()}">
+                <td colspan="5" style="padding: 14px; text-align: center; color: var(--slate-500);">🎉 No active API
+                  errors recorded in the database. All boards operating cleanly.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- Category Tabs Navigation -->
+    <nav class="category-tabs-container">
+      <div class="category-tabs" role="tablist" aria-label="Job Tracking Categories">
+        <button type="button" class="category-tab" id="tabBtn-PENDING" role="tab"
+          th:classappend="${activeTab == 'PENDING' ? 'active' : ''}" onclick="switchTab('PENDING')">
+          <span class="tab-icon">🕒</span>
+          <span class="tab-label">Pending</span>
+          <span class="tab-badge badge-pending" id="badge-count-PENDING" th:text="${pendingCount}">0</span>
+        </button>
+
+        <button type="button" class="category-tab" id="tabBtn-APPLIED" role="tab"
+          th:classappend="${activeTab == 'APPLIED' ? 'active' : ''}" onclick="switchTab('APPLIED')">
+          <span class="tab-icon">✅</span>
+          <span class="tab-label">Applied</span>
+          <span class="tab-badge badge-applied" id="badge-count-APPLIED" th:text="${appliedCount}">0</span>
+        </button>
+
+        <button type="button" class="category-tab" id="tabBtn-NOT_RELEVANT" role="tab"
+          th:classappend="${activeTab == 'NOT_RELEVANT' ? 'active' : ''}" onclick="switchTab('NOT_RELEVANT')">
+          <span class="tab-icon">🚫</span>
+          <span class="tab-label">Not Relevant</span>
+          <span class="tab-badge badge-not-relevant" id="badge-count-NOT_RELEVANT"
+            th:text="${notRelevantCount}">0</span>
+        </button>
+      </div>
+
+      <div class="category-tabs-info">
+        <span id="tabCategoryHeadline">🕒 <strong>Pending Queue:</strong> Openings waiting for your review and
+          application</span>
+        <span class="category-sync-indicator">⚡ One-click status updates synced with DB</span>
+      </div>
+    </nav>
+
+    <!-- Search, Filters, and Sorting Controls -->
+    <section class="controls-bar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search by role, company, skills (Java, Kafka, Redis)..."
+          oninput="applyFilters()">
+      </div>
+
+      <div class="filter-chips">
+        <button class="chip active" onclick="filterCity('all', this)">All India</button>
+        <button class="chip" onclick="filterCity('bengaluru', this)">Bengaluru</button>
+        <button class="chip" onclick="filterCity('hyderabad', this)">Hyderabad</button>
+        <button class="chip" onclick="filterCity('pune', this)">Pune</button>
+        <button class="chip" onclick="filterCity('delhi', this)">Delhi/NCR</button>
+        <button class="chip" onclick="filterCity('remote', this)">Remote</button>
+      </div>
+
+      <div class="sort-control">
+        <label for="sortSelect">Sort:</label>
+        <select id="sortSelect" onchange="applySort()">
+          <option value="score-desc" selected>Score: High to Low</option>
+          <option value="date-desc">📅 Posted Date: Newest First</option>
+          <option value="date-asc">📅 Posted Date: Oldest First</option>
+          <option value="score-asc">Score: Low to High</option>
+          <option value="company-asc">Company: A to Z</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Section Heading -->
+    <div class="section-head">
+      <h2>
+        <span id="sectionTitle">Pending Openings</span>
+        <span class="count-pill" id="visibleCount" th:text="${pendingCount} + ' Openings'">0 Openings</span>
+      </h2>
+      <span style="font-size: 13px; color: var(--slate-500);" id="sectionSubtitle">Score &ge; 59 &middot; Tracked in
+        pipeline</span>
+    </div>
+
+    <!-- Job Cards List (Score Wise Sorted) -->
+    <section class="jobs-grid" id="jobsGrid">
+      <article th:each="job : ${jobs}" class="job-card" th:id="'job-card-' + ${job.id}"
+        th:classappend="${job.matchScore >= 75 ? 'score-high' : (job.matchScore >= 60 ? 'score-mid' : 'score-low')}"
+        th:attr="data-id=${job.id}, data-category=${job.category}, data-score=${job.matchScore}, data-company=${job.company}, data-location=${job.location}, data-title=${job.title}, data-published=${job.publishedAt != null ? job.publishedAt.toEpochMilli() : 0}, data-first-seen=${job.firstSeenAt != null ? job.firstSeenAt.toEpochMilli() : 0}">
+
+        <div class="card-top">
+          <div class="job-header">
+            <div class="company-avatar" th:text="${#strings.substring(job.company, 0, 1)}">C</div>
+            <div class="job-title-area">
+              <h3>
+                <a th:href="${job.jobUrl}" target="_blank" rel="noopener" th:text="${job.title}">Software Engineer
+                  II</a>
+              </h3>
+              <div class="job-submeta">
+                <b th:text="${job.company}">Company</b>
+                <span>&bull;</span>
+                <span th:text="${job.location}">Bengaluru, India</span>
+                <span>&bull;</span>
+                <span class="source-tag" th:text="${'via ' + job.source}">via Greenhouse</span>
+                <span>&bull;</span>
+                <!-- Category Status Pill -->
+                <span class="job-category-pill"
+                  th:classappend="${job.category == 'APPLIED' ? 'pill-applied' : (job.category == 'NOT_RELEVANT' ? 'pill-not-relevant' : 'pill-pending')}"
+                  th:text="${job.category == 'APPLIED' ? '✅ Applied' : (job.category == 'NOT_RELEVANT' ? '🚫 Not Relevant' : '🕒 Pending')}">
+                  🕒 Pending
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score Badge with Visual Rating -->
+          <div class="score-badge"
+            th:classappend="${job.matchScore >= 75 ? 'badge-high' : (job.matchScore >= 60 ? 'badge-mid' : 'badge-low')}">
+            <div class="score-num" th:text="${job.matchScore}">85</div>
+            <div class="score-lbl"
+              th:text="${job.matchScore >= 75 ? 'Top Match' : (job.matchScore >= 60 ? 'Great Match' : 'Match')}">Top
+              Match</div>
+          </div>
+        </div>
+
+        <!-- Tags Row -->
+        <div class="tag-row">
+          <span class="tag tag-india">📍 India Verified</span>
+          <span class="tag tag-exp">🎓 &lt; 5 Yrs Exp</span>
+          <span class="tag tag-comp"
+            th:text="${job.compensationStatus == 'unknown' ? 'Target: ₹33+ LPA CTC' : job.compensationStatus}">Target:
+            ₹33+ LPA CTC</span>
+          <span class="tag tag-new" th:if="${job.lastRunNew}">✨ New This Run</span>
+          <span class="tag" th:if="${job.compensationText != null and !job.compensationText.isBlank()}"
+            th:text="${job.compensationText}">Salary</span>
+        </div>
+
+        <!-- Scan Lifecycle Tracking -->
+        <div class="scan-meta-row"
+          style="margin-top: 10px; font-size: 11.5px; color: var(--slate-500); display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
+          <span title="Exact scan time this job was first discovered">
+            🕒 <strong>First Seen:</strong> <span style="color: var(--slate-700);"
+              th:text="${job.formattedFirstSeen}">11 Oct, 10:30 PM</span>
+          </span>
+          <span title="Exact scan time this job was confirmed still live">
+            🔄 <strong>Last Verified:</strong> <span style="color: var(--slate-700);"
+              th:text="${job.formattedLastSeen}">11 Oct, 11:00 PM</span>
+          </span>
+          <span th:if="${!job.formattedPublishedAt.isBlank()}" title="Publication date from career board">
+            📅 <strong>Posted:</strong> <span style="color: var(--slate-700);" th:text="${job.formattedPublishedAt}">10
+              Oct 2026</span>
+          </span>
+        </div>
+
+        <!-- Expandable Job Description -->
+        <details class="jd-accordion">
+          <summary>
+            <span>📄 View Job Description &amp; Requirements</span>
+            <span style="font-size: 11.5px; font-weight: normal; color: var(--slate-500);">Click to toggle ▾</span>
+          </summary>
+          <div class="jd-content">
+            <p
+              th:text="${job.description != null and !job.description.isBlank() ? job.description : 'No detailed job description provided by career portal. Please review opening details directly on the company application site.'}">
+            </p>
+          </div>
+        </details>
+
+        <!-- Card Footer with Research / Apply Actions & Category Updater -->
+        <div class="card-footer">
+          <div class="action-links">
+            <a class="btn-apply" th:href="${job.jobUrl}" target="_blank" rel="noopener">
+              Apply on Company Site ↗
+            </a>
+            <a class="btn-research btn-alumni"
+              th:href="@{'https://www.linkedin.com/search/results/people/?keywords=' + ${#uris.escapeQueryParam(job.company + ' NIT Bhopal software')}}"
+              target="_blank" rel="noopener"
+              title="Find NIT Bhopal alumni working at this company for high-acceptance referrals">
+              🎓 NIT Bhopal Alumni
+            </a>
+            <a class="btn-research"
+              th:href="@{'https://www.linkedin.com/search/results/people/?keywords=' + ${#uris.escapeQueryParam(job.company + ' recruiter India')}}"
+              target="_blank" rel="noopener">
+              👔 Recruiters
+            </a>
+            <a class="btn-research"
+              th:href="@{'https://www.linkedin.com/search/results/people/?keywords=' + ${#uris.escapeQueryParam(job.company + ' hiring manager India')}}"
+              target="_blank" rel="noopener">
+              🤝 Hiring Leads
+            </a>
+          </div>
+
+          <!-- Category Quick Updater Segmented Buttons -->
+          <div class="category-updater-bar">
+            <span class="updater-label">Status:</span>
+            <div class="category-btn-group" role="group" aria-label="Change job category">
+              <button type="button" class="cat-btn cat-btn-pending"
+                th:classappend="${job.category == 'PENDING' ? 'active' : ''}"
+                th:onclick="|setJobCategory(${job.id}, 'PENDING', this)|" title="Move to Pending">
+                🕒 Pending
+              </button>
+              <button type="button" class="cat-btn cat-btn-applied"
+                th:classappend="${job.category == 'APPLIED' ? 'active' : ''}"
+                th:onclick="|setJobCategory(${job.id}, 'APPLIED', this)|" title="Mark as Applied">
+                ✅ Applied
+              </button>
+              <button type="button" class="cat-btn cat-btn-not-relevant"
+                th:classappend="${job.category == 'NOT_RELEVANT' ? 'active' : ''}"
+                th:onclick="|setJobCategory(${job.id}, 'NOT_RELEVANT', this)|" title="Mark as Not Relevant">
+                🚫 Not Relevant
+              </button>
+            </div>
+            <noscript>
+              <form method="post" th:action="@{'/jobs/' + ${job.id} + '/category'}" style="display:inline;">
+                <input type="hidden" name="tab" th:value="${activeTab}">
+                <select name="category" onchange="this.form.submit()">
+                  <option value="PENDING" th:selected="${job.category == 'PENDING'}">Pending</option>
+                  <option value="APPLIED" th:selected="${job.category == 'APPLIED'}">Applied</option>
+                  <option value="NOT_RELEVANT" th:selected="${job.category == 'NOT_RELEVANT'}">Not Relevant</option>
+                </select>
+              </form>
+            </noscript>
+          </div>
+        </div>
+      </article>
+
+      <!-- Empty State if no jobs match -->
+      <div class="empty-state" th:if="${jobs.isEmpty()}" id="serverEmptyState">
+        <div class="empty-icon">📂</div>
+        <h3>No Qualifying India Openings Found Yet</h3>
+        <p>No jobs meeting the criteria (Score &ge; 59, &lt; 5 Yrs Experience, India / India Remote) are stored yet.
+          Click "Run Job Scan" above to discover new jobs.</p>
+        <button class="scan-btn" onclick="document.getElementById('scanBtn').click()">▶ Trigger Job Scan Now</button>
+      </div>
+
+      <!-- Category-Specific Empty States -->
+      <div class="empty-state category-empty-state" id="emptyPending" style="display: none;">
+        <div class="empty-icon">🎉</div>
+        <h3>All Caught Up in Pending!</h3>
+        <p>You have reviewed all pending opportunities. Run a new job scan above to discover newly posted openings
+          across company career pages.</p>
+        <button class="scan-btn" onclick="document.getElementById('scanBtn').click()">▶ Trigger Job Scan Now</button>
+      </div>
+
+      <div class="empty-state category-empty-state" id="emptyApplied" style="display: none;">
+        <div class="empty-icon">💼</div>
+        <h3>No Applied Jobs Tracked Yet</h3>
+        <p>When you submit an application on a company portal, click <strong>"✅ Applied"</strong> on that job card to
+          keep track of your active pipeline here.</p>
+        <button class="chip active" style="padding: 9px 18px; font-size: 13.5px;" onclick="switchTab('PENDING')">View
+          Pending Jobs →</button>
+      </div>
+
+      <div class="empty-state category-empty-state" id="emptyNotRelevant" style="display: none;">
+        <div class="empty-icon">✨</div>
+        <h3>No Jobs Marked as Not Relevant</h3>
+        <p>Any jobs you mark as <strong>"🚫 Not Relevant"</strong> will be archived here, keeping your Pending feed
+          focused on target roles.</p>
+        <button class="chip active" style="padding: 9px 18px; font-size: 13.5px;" onclick="switchTab('PENDING')">View
+          Pending Jobs →</button>
+      </div>
+
+      <div class="empty-state" id="filterEmptyState" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3>No Matching Jobs in This Category</h3>
+        <p>No openings match your search keyword or city filter under this category. Try adjusting keywords or clearing
+          city filter.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Client-side Interactive Filter, Category Tabs & Sorting Logic -->
+  <script th:inline="javascript">
+    let currentCategoryTab = /*[[${activeTab}]]*/ 'PENDING';
+    let activeCity = 'all';
+
+    const tabDescriptions = {
+      'PENDING': '🕒 <strong>Pending Queue:</strong> Openings waiting for your review and application',
+      'APPLIED': '✅ <strong>Applied Pipeline:</strong> Roles where you have submitted applications',
+      'NOT_RELEVANT': '🚫 <strong>Not Relevant Archive:</strong> Openings filtered out of your main queue'
+    };
+
+    const tabTitles = {
+      'PENDING': 'Pending Openings',
+      'APPLIED': 'Applied Openings',
+      'NOT_RELEVANT': 'Not Relevant Openings'
+    };
+
+    function switchTab(tab) {
+      currentCategoryTab = (tab || 'PENDING').toUpperCase();
+
+      // Update active tab buttons
+      document.querySelectorAll('.category-tabs .category-tab').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('tabBtn-' + currentCategoryTab);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      // Update headline text
+      const headline = document.getElementById('tabCategoryHeadline');
+      if (headline && tabDescriptions[currentCategoryTab]) {
+        headline.innerHTML = tabDescriptions[currentCategoryTab];
+      }
+
+      const sectionTitle = document.getElementById('sectionTitle');
+      if (sectionTitle && tabTitles[currentCategoryTab]) {
+        sectionTitle.innerText = tabTitles[currentCategoryTab];
+      }
+
+      // Sync URL without page refresh
+      const url = new URL(window.location);
+      url.searchParams.set('tab', currentCategoryTab.toLowerCase());
+      window.history.replaceState({}, '', url);
+
+      applyFilters();
+    }
+
+    function filterCity(city, btn) {
+      activeCity = city.toLowerCase();
+      document.querySelectorAll('.filter-chips .chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+      const cards = document.querySelectorAll('#jobsGrid .job-card');
+      let visible = 0;
+      let totalInCurrentTab = 0;
+
+      cards.forEach(card => {
+        const cardCat = (card.getAttribute('data-category') || 'PENDING').toUpperCase();
+        const categoryMatch = (cardCat === currentCategoryTab);
+
+        if (categoryMatch) {
+          totalInCurrentTab++;
+        }
+
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const company = (card.getAttribute('data-company') || '').toLowerCase();
+        const location = (card.getAttribute('data-location') || '').toLowerCase();
+        const cardText = card.innerText.toLowerCase();
+
+        // City filter match
+        let cityMatch = true;
+        if (activeCity !== 'all') {
+          if (activeCity === 'remote') {
+            cityMatch = location.includes('remote') || cardText.includes('remote');
+          } else if (activeCity === 'delhi') {
+            cityMatch = location.includes('delhi') || location.includes('noida') || location.includes('gurugram') || location.includes('gurgaon');
+          } else {
+            cityMatch = location.includes(activeCity);
+          }
+        }
+
+        // Search query match
+        const searchMatch = !query || title.includes(query) || company.includes(query) || location.includes(query) || cardText.includes(query);
+
+        if (categoryMatch && cityMatch && searchMatch) {
+          card.style.display = 'block';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Update visible counter badge
+      const countPill = document.getElementById('visibleCount');
+      if (countPill) countPill.innerText = visible + ' Openings';
+
+      // Hide all category empty states first
+      ['emptyPending', 'emptyApplied', 'emptyNotRelevant', 'filterEmptyState'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
+      // Show relevant empty state
+      if (cards.length > 0) {
+        if (totalInCurrentTab === 0) {
+          if (currentCategoryTab === 'PENDING') {
+            const el = document.getElementById('emptyPending');
+            if (el) el.style.display = 'block';
+          } else if (currentCategoryTab === 'APPLIED') {
+            const el = document.getElementById('emptyApplied');
+            if (el) el.style.display = 'block';
+          } else if (currentCategoryTab === 'NOT_RELEVANT') {
+            const el = document.getElementById('emptyNotRelevant');
+            if (el) el.style.display = 'block';
+          }
+        } else if (visible === 0) {
+          const filterEmpty = document.getElementById('filterEmptyState');
+          if (filterEmpty) filterEmpty.style.display = 'block';
+        }
+      }
+    }
+
+    async function setJobCategory(jobId, newCategory, btnElement) {
+      const card = document.getElementById('job-card-' + jobId);
+      if (!card) return;
+
+      const oldCategory = (card.getAttribute('data-category') || 'PENDING').toUpperCase();
+      if (oldCategory === newCategory) return; // already in this category
+
+      btnElement.style.opacity = '0.5';
+
+      try {
+        const response = await fetch(`/api/jobs/${jobId}/category`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ category: newCategory })
+        });
+
+        if (!response.ok) {
+          throw new Error('Server returned ' + response.status);
+        }
+
+        const data = await response.json();
+        const savedCategory = data.category || newCategory;
+
+        // Update card attribute
+        card.setAttribute('data-category', savedCategory);
+
+        // Update active class on buttons inside this card
+        const btnGroup = card.querySelector('.category-btn-group');
+        if (btnGroup) {
+          btnGroup.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+          const targetClass = '.cat-btn-' + savedCategory.toLowerCase().replace('_', '-');
+          const newActiveBtn = btnGroup.querySelector(targetClass);
+          if (newActiveBtn) newActiveBtn.classList.add('active');
+        }
+
+        // Update pill badge in card header
+        const pill = card.querySelector('.job-category-pill');
+        if (pill) {
+          pill.className = 'job-category-pill pill-' + savedCategory.toLowerCase().replace('_', '-');
+          if (savedCategory === 'APPLIED') pill.innerText = '✅ Applied';
+          else if (savedCategory === 'NOT_RELEVANT') pill.innerText = '🚫 Not Relevant';
+          else pill.innerText = '🕒 Pending';
+        }
+
+        // Update counts on top tabs
+        if (data.counts) {
+          if (document.getElementById('badge-count-PENDING')) {
+            document.getElementById('badge-count-PENDING').innerText = data.counts.PENDING ?? 0;
+          }
+          if (document.getElementById('badge-count-APPLIED')) {
+            document.getElementById('badge-count-APPLIED').innerText = data.counts.APPLIED ?? 0;
+          }
+          if (document.getElementById('badge-count-NOT_RELEVANT')) {
+            document.getElementById('badge-count-NOT_RELEVANT').innerText = data.counts.NOT_RELEVANT ?? 0;
+          }
+        }
+
+        // Show friendly toast feedback
+        showCategoryToast(savedCategory);
+
+        // Animate out if moved away from current tab
+        if (currentCategoryTab !== savedCategory) {
+          card.style.transition = 'all 0.3s ease';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.96)';
+          setTimeout(() => {
+            card.style.display = 'none';
+            card.style.opacity = '';
+            card.style.transform = '';
+            card.style.transition = '';
+            applyFilters();
+          }, 300);
+        } else {
+          applyFilters();
+        }
+
+      } catch (err) {
+        console.error('Category update failed:', err);
+        alert('Could not update category. Please verify your connection.');
+      } finally {
+        btnElement.style.opacity = '1';
+      }
+    }
+
+    function showCategoryToast(category) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+
+      let label = 'Pending';
+      let icon = '🕒';
+      if (category === 'APPLIED') { label = 'Applied'; icon = '✅'; }
+      else if (category === 'NOT_RELEVANT') { label = 'Not Relevant'; icon = '🚫'; }
+
+      toast.innerHTML = `
+        <span>${icon} Moved to <strong>${label}</strong></span>
+        <button class="toast-link" onclick="switchTab('${category}'); this.parentElement.remove();">View Tab →</button>
+      `;
+
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 20);
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    function applySort() {
+      const mode = document.getElementById('sortSelect').value;
+      const grid = document.getElementById('jobsGrid');
+      const cards = Array.from(grid.querySelectorAll('.job-card'));
+
+      cards.sort((a, b) => {
+        const scoreA = parseInt(a.getAttribute('data-score') || '0', 10);
+        const scoreB = parseInt(b.getAttribute('data-score') || '0', 10);
+        const compA = (a.getAttribute('data-company') || '').toLowerCase();
+        const compB = (b.getAttribute('data-company') || '').toLowerCase();
+
+        // Effective date timestamp: publishedAt from ATS, or firstSeenAt discovery time
+        const pubA = parseInt(a.getAttribute('data-published') || '0', 10);
+        const seenA = parseInt(a.getAttribute('data-first-seen') || '0', 10);
+        const dateA = pubA > 0 ? pubA : seenA;
+
+        const pubB = parseInt(b.getAttribute('data-published') || '0', 10);
+        const seenB = parseInt(b.getAttribute('data-first-seen') || '0', 10);
+        const dateB = pubB > 0 ? pubB : seenB;
+
+        if (mode === 'date-desc') return dateB - dateA;
+        if (mode === 'date-asc') return dateA - dateB;
+        if (mode === 'score-desc') return scoreB - scoreA;
+        if (mode === 'score-asc') return scoreA - scoreB;
+        if (mode === 'company-asc') return compA.localeCompare(compB);
+        return 0;
+      });
+
+      cards.forEach(c => grid.appendChild(c));
+    }
+
+    // Submit spinner
+    const scanForm = document.getElementById('scanForm');
+    if (scanForm) {
+      scanForm.addEventListener('submit', () => {
+        const btn = document.getElementById('scanBtn');
+        if (btn) {
+          btn.innerHTML = '⏳ Scanning Jobs...';
+          btn.style.opacity = '0.7';
+          btn.style.pointerEvents = 'none';
+        }
+      });
+    }
+
+    // Initialize initial view based on active tab from query parameter or default
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const urlTab = params.get('tab');
+      if (urlTab) {
+        const norm = urlTab.toUpperCase();
+        if (norm === 'APPLIED' || norm === 'NOT_RELEVANT' || norm === 'PENDING') {
+          currentCategoryTab = norm;
+        }
+      }
+      switchTab(currentCategoryTab);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+# Target Companies & ATS Boards Configuration
+# Configured specifically for high-compensation SDE 1 / SDE 2 India roles (₹33L - ₹65L+ CTC)
+jobfinder:
+  target-ctc-lpa: 33
+  max-age-days: 30
+  min-score: 59
+
+  # ====================================================================
+  # SMARTRECRUITERS BOARDS (Direct Official JSON API)
+  # ====================================================================
+  smartrecruiters:
+    - company: "PhonePe"
+      identifier: "PHONEPELIMITED"
+      careers-url: "https://careers.smartrecruiters.com/PHONEPELIMITED"
+    - company: "Visa"
+      identifier: "Visa"
+      careers-url: "https://careers.smartrecruiters.com/Visa"
+    - company: "Freshworks"
+      identifier: "Freshworks"
+      careers-url: "https://careers.smartrecruiters.com/Freshworks"
+
+  # ====================================================================
+  # GREENHOUSE BOARDS (Direct Verified JSON API)
+  # ====================================================================
+  greenhouse:
+    - company: "Stripe"
+      token: "stripe"
+      careers-url: "https://stripe.com/jobs"
+    - company: "Databricks"
+      token: "databricks"
+      careers-url: "https://www.databricks.com/company/careers"
+    - company: "MongoDB"
+      token: "mongodb"
+      careers-url: "https://www.mongodb.com/company/careers"
+    - company: "Cloudflare"
+      token: "cloudflare"
+      careers-url: "https://www.cloudflare.com/careers"
+    - company: "Elastic"
+      token: "elastic"
+      careers-url: "https://www.elastic.co/about/careers"
+    - company: "Twilio"
+      token: "twilio"
+      careers-url: "https://www.twilio.com/company/jobs"
+    - company: "Groww"
+      token: "groww"
+      careers-url: "https://groww.in/careers"
+    - company: "PayPay"
+      token: "pay2dc"
+      careers-url: "https://job-boards.greenhouse.io/pay2dc"
+
+  # ====================================================================
+  # LEVER BOARDS (Direct Verified JSON API)
+  # ====================================================================
+  lever:
+    - company: "Meesho"
+      site: "meesho"
+      careers-url: "https://www.meesho.io/jobs"
+    - company: "Palantir"
+      site: "palantir"
+      careers-url: "https://jobs.lever.co/palantir"
+    - company: "Onehouse"
+      site: "Onehouse"
+      careers-url: "https://jobs.lever.co/Onehouse"
+    - company: "Drivetrain"
+      site: "drivetrain"
+      careers-url: "https://jobs.lever.co/drivetrain"
+    - company: "HighLevel"
+      site: "gohighlevel"
+      careers-url: "https://jobs.lever.co/gohighlevel"
+    - company: "Acceldata"
+      site: "acceldata"
+      careers-url: "https://jobs.lever.co/acceldata"
+    - company: "Level AI"
+      site: "levelai"
+      careers-url: "https://jobs.lever.co/levelai"
+    - company: "Paytm"
+      site: "paytm"
+      careers-url: "https://jobs.lever.co/paytm"
+    - company: "Everbridge"
+      site: "everbridge"
+      careers-url: "https://jobs.lever.co/everbridge"
+
+  # ====================================================================
+  # ASHBY BOARDS (Direct Verified JSON API)
+  # ====================================================================
+  ashby:
+    - company: "Ramp"
+      name: "ramp"
+      careers-url: "https://jobs.ashbyhq.com/ramp"
+    - company: "Notion"
+      name: "notion"
+      careers-url: "https://jobs.ashbyhq.com/notion"
+    - company: "Zapier"
+      name: "zapier"
+      careers-url: "https://jobs.ashbyhq.com/zapier"
+
+  # ====================================================================
+  # WORKDAY BOARDS (Direct CXS REST API)
+  # ====================================================================
+  workday:
+    - company: "Salesforce"
+      careers-url: "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site"
+    - company: "Walmart Global Tech"
+      careers-url: "https://walmart.wd504.myworkdayjobs.com/WalmartExternal"
+    - company: "Adobe"
+      careers-url: "https://adobe.wd5.myworkdayjobs.com/external_experienced"
+    - company: "Mastercard"
+      careers-url: "https://mastercard.wd1.myworkdayjobs.com/CorporateCareers"
+    - company: "Workday"
+      careers-url: "https://workday.wd5.myworkdayjobs.com/Workday"
+
+  # ====================================================================
+  # OFFICIAL CAREER PAGES & CUSTOM SCRAPERS
+  # Amazon is dynamically queried via custom Amazon Jobs JSON API in CareerPageAdapter
+  # ====================================================================
+  career-pages:
+    - company: "Amazon"
+      url: "https://www.amazon.jobs/en/locations/india"
+    - company: "Microsoft"
+      url: "https://careers.microsoft.com/v2/global/en/locations/india.html"
+    - company: "Google"
+      url: "https://careers.google.com/jobs/results/?location=India"
+    - company: "Apple"
+      url: "https://jobs.apple.com/en-in/search?search=Software%20Engineer&location=india-INDC"
+    - company: "JPMorgan Chase"
+      url: "https://careers.jpmorgan.com/us/en/home"
+    - company: "Oracle"
+      url: "https://www.oracle.com/careers/"
+    - company: "SAP"
+      url: "https://careers.sap.com/go/India/8807201/"
+    - company: "Flipkart"
+      url: "https://www.flipkartcareers.com/"
+    - company: "Zoho"
+      url: "https://www.zoho.com/careers/"
+    - company: "Freshworks"
+      url: "https://www.freshworks.com/company/careers/"

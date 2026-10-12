@@ -1,0 +1,18 @@
+jobfinder:
+  target-ctc-lpa: 33
+  max-age-days: 7
+  min-score: 55
+  greenhouse: []
+  lever: []
+  ashby: []
+# Example:
+# jobfinder:
+#   greenhouse:
+#     - company: "Example Company"
+#       token: "public-board-token"
+#   lever:
+#     - company: "Example Company"
+#       site: "public-site-name"
+#   ashby:
+#     - company: "Example Company"
+#       name: "PublicBoardName"
